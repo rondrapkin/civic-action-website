@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcoming Immigrants in Canada</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #d62828;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    section {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #003049;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #003049;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcoming Immigrants in Canada</h1>
+  <p>A Civic Action Reflection Project</p>
+</header>
+
+<section>
+  <h2>Project Goal</h2>
+  <p>
+    The goal of this project was to help immigrants feel accepted in the community,
+    raise awareness about the challenges they face, and encourage people to be kind
+    and welcoming toward newcomers.
+  </p>
+</section>
+
+<section>
+  <h2>The Issue</h2>
+  <p>
+    Many immigrants do not always feel accepted or supported when they arrive in Canada.
+  </p>
+</section>
+
+<section>
+  <h2>Actions Taken</h2>
+  <p>
+    I created a website to raise awareness and collect opinions from others.
+  </p>
+</section>
+
+<section>
+  <h2>Results & Impact</h2>
+  <p>
+    The project helped raise awareness and encouraged people to be more welcoming.
+  </p>
+</section>
+
+<section>
+  <h2>Challenges & Learning</h2>
+  <p>
+    I learned how important immigration is to Canada’s economy and how important support systems are.
+  </p>
+</section>
+
+<section>
+  <h2>Reflection & Future Action</h2>
+  <p>
+    In the future, I plan to stay informed and help new students feel welcomed.
+  </p>
+</section>
+
+<section>
+  <h2>Community Feedback</h2>
+  <p><strong>Josh P. (Gr. 9)</strong>: This actually made me think more about immigration.</p>
+  <p><strong>Aaliyah S.</strong>: It made me think about how we treat new students.</p>
+  <p><strong>Ryan K.</strong>: Immigrants need support to succeed.</p>
+  <p><strong>Maria G.</strong>: I didn’t know immigrants face so many challenges.</p>
+</section>
+
+<section>
+  <h2>Share Your Thoughts</h2>
+  <form id="commentForm">
+    <input type="text" id="name" placeholder="Your name" required style="width:100%; padding:8px;" /><br /><br />
+    <textarea id="comment" placeholder="Your thoughts..." required style="width:100%; padding:8px;"></textarea><br /><br />
+    <button type="submit">Submit</button>
+  </form>
+  <div id="liveComments"></div>
+</section>
+
+<script>
+  const form = document.getElementById('commentForm');
+  const commentsDiv = document.getElementById('liveComments');
+
+  function loadComments() {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    commentsDiv.innerHTML = '<h3>New Comments</h3>';
+    comments.forEach(c => {
+      const p = document.createElement('p');
+      p.innerHTML = `<strong>${c.name}</strong>: ${c.text}`;
+      commentsDiv.appendChild(p);
+    });
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const text = document.getElementById('comment').value;
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.push({ name, text });
+    localStorage.setItem('comments', JSON.stringify(comments));
+    form.reset();
+    loadComments();
+  });
+
+  loadComments();
+</script>
+
+<footer>
+  <p>Created by Ron Drapkin and Nolan Atkinson | Civic Action Project</p>
+</footer>
+
+</body>
+</html>
